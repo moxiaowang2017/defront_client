@@ -1,0 +1,117 @@
+<view class="container">
+  <!-- 1. -->
+  <view class="about-me-container">
+    <view>
+      <open-data type="userAvatarUrl" class="avator-image"></open-data>
+    </view>
+    <!-- <image  src="/images/user-unlogin.png"></image> -->
+    <view class="about-me">
+      <view class="me-title">
+        <open-data type="userNickName"></open-data>
+      </view>
+      <view class="me-label">只争朝夕，不负韶华</view>
+    </view>
+    <button class="me-button" bindtap='onShareAppMessage' open-type="share" size="mini">邀请好友</button>
+  </view>
+  <view class="clock-container">
+    <view class="txt-lf" bindtap="goToEditor" wx:if="{{!isClock}}">打卡</view>
+    <view class="txt-lf" bindtap="goToPublish" wx:if="{{isClock}}">已打卡</view>
+    <view class="txt-ct" bindtap="goToMyQuestion" data-type="all">
+      <view class="num-color">{{totalNum}}</view>
+      <view class="lable-txt">我的练习</view>
+    </view>
+    <view class="txt-rt" bindtap="goToMyQuestion" data-type="error">
+      <view class="num-color">{{errorNum}}</view>
+      <view class="lable-txt">错题</view>
+    </view>
+  </view>
+  <!-- 2. -->
+  <view class="weui-panel__bd" style="margin-top:20px;width:100%">
+    <view class="weui-media-box weui-media-box_small-appmsg">
+      <view class="weui-cells weui-cells_in-small-appmsg">
+        <!-- <navigator url="" bindtap="programing" class="weui-cell weui-cell_example weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__hd">
+            <image src="/images/me/1.png" style="width: 30px;height: 30px;margin-right: 16px;vertical-align:middle;" />
+          </view>
+          <view class="weui-cell__bd weui-cell_primary">
+            <view>排行榜</view>
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator> -->
+        <navigator url="/pages/me/chart/index" bindtap="programing" class="weui-cell weui-cell_example weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__hd">
+            <image src="/images/me/2.png" style="width: 30px;height: 30px;margin-right: 16px;vertical-align:middle;" />
+          </view>
+          <view class="weui-cell__bd weui-cell_primary">
+            <view>统计</view>
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+        <!-- <navigator url="/pages/historyPlan/index" class="weui-cell weui-cell_example weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__hd">
+            <image src="/images/me/5.png" style="width: 30px;height: 30px;margin-right: 16px;vertical-align:middle;" />
+          </view>
+          <view class="weui-cell__bd weui-cell_primary">
+            <view>历史任务</view>
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator> -->
+        <navigator url="/pages/me/interviewRecord/index" class="weui-cell weui-cell_example weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__hd">
+            <image src="/images/me/3.png" style="width: 30px;height: 30px;margin-right: 16px;vertical-align:middle;" />
+          </view>
+          <view class="weui-cell__bd weui-cell_primary">
+            <view style="display: inline-block; vertical-align: middle">面试记录</view>
+            <view class="weui-badge" style="margin-left: 5px;" wx:if="{{unreviewCount>0}}">{{unreviewCount}}</view>
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+        <navigator url="/pages/me/advice/index" class="weui-cell weui-cell_example weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__hd">
+            <image src="/images/me/4.png" style="width: 30px;height: 30px;margin-right: 16px;vertical-align:middle;" />
+          </view>
+          <view class="weui-cell__bd weui-cell_primary">
+            <view>建议</view>
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+        <navigator url="/pages/me/help/index" bindtap="programing" class="weui-cell weui-cell_example weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__hd">
+            <image src="/images/me/7.png" style="width: 30px;height: 30px;margin-right: 16px;vertical-align:middle;" />
+          </view>
+          <view class="weui-cell__bd weui-cell_primary">
+            <view>关于系统</view>
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+        <navigator url="/pages/me/article/index" class="weui-cell weui-cell_example weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__hd">
+            <image src="/images/me/6.png" style="width: 30px;height: 30px;margin-right: 16px;vertical-align:middle;" />
+          </view>
+          <view class="weui-cell__bd weui-cell_primary">
+            <view>发表文章</view>
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <!-- 弹出框 -->
+  <view class="weui-demo-dialog {{istrue ? 'weui-demo-dialog_show' : ''}}">
+    <view class="weui-mask" bindtap="closeDialog"></view>
+    <view class="weui-dialog__wrp" bindtap="closeDialog">
+      <view class="weui-dialog" catchtap="stopEvent">
+        <view class="weui-dialog__hd">
+          <view class="weui-dialog__title">{{showTitle}}</view>
+        </view>
+        <view class="weui-dialog__bd">
+          {{showLabel}}
+        </view>
+        <view class="weui-dialog__ft">
+          <view class="weui-dialog__btn weui-dialog__btn_default" bindtap="cancelDialog">取消</view>
+          <view class="weui-dialog__btn" bindtap="okDialog">确定</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

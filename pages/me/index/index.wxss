@@ -1,0 +1,114 @@
+.about-me-container {
+  background-color: white;
+  height: 200rpx;
+  line-height: 200rpx;
+  width: 100%;
+}
+
+.avator-image {
+  height: 150rpx;
+  width: 150rpx;
+  margin-left: 12px;
+  margin-top: 25rpx;
+  display: inline-block;
+}
+
+.me-button {
+  position: absolute;
+  top: 45rpx;
+  right: 12px;
+  background-color: #4f58a8;
+  color: white;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding: 0 10px;
+  border-radius: 5px;
+}
+
+.about-me {
+  position: absolute;
+  top: 30rpx;
+  left: 200rpx;
+}
+
+.me-title {
+  font-weight: 400;
+  font-size: 17px;
+  color: rgba(0, 0, 0, 0.9);
+  width: auto;
+  white-space: nowrap;
+  word-wrap: normal;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.me-label {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+  padding-top: 4px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.me-label, .me-title {
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.weui-demo-dialog {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.weui-demo-dialog_show {
+  visibility: visible;
+  opacity: 1;
+}
+
+page {
+  background-color: #ededed;
+}
+
+.clock-container {
+  display: flex;
+  height: 120rpx;
+  width: 100%;
+  background-color: white;
+  margin-top: 25rpx;
+  line-height: 60rpx;
+}
+
+.txt-lf {
+  flex: 1;
+  line-height: 120rpx;
+  text-align: center;
+  background-color: #4f58a8;
+  color: white;
+  border-top-right-radius: 50rpx;
+  border-bottom-right-radius: 50rpx;
+  font-size: 1.2em;
+}
+
+.txt-ct {
+  flex: 1;
+  text-align: center;
+}
+
+.txt-rt {
+  flex: 1;
+  text-align: center;
+}
+
+.num-color {
+  color: #4f58a5;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.lable-txt {
+  color: rgba(0, 0, 0, 0.5);
+}
+

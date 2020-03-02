@@ -1,0 +1,7 @@
+<view class="container">
+  <view class="list-container" wx:for="{{markList}}" wx:key="*this">
+    <view class="list-lf">{{index+1}}.{{item.question}}</view>
+    <view class="list-rt" bindtap="gotoCancel" data-questionId="{{item.questionId}}">取消</view>
+  </view>
+  <view wx:if="{{!hasMarkData}}" style="margin-top:45%">暂无数据</view>
+</view>

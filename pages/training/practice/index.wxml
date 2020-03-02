@@ -1,0 +1,52 @@
+<import src="../../../components/wxParse/wxParse.wxml" />
+<view class="container">
+  <view wx:if="{{!hasNoData}}" style="width:100%">
+    <view class="container-width" style="color:#4F58A8;">{{curType}}</view>
+    <view class="container-width quetsuon-title">{{curIndex}}.{{curQuestion.question}}：</view>
+    <!-- 单选 -->
+    <radio-group class="radio-group container-width quetsuon-option" bindchange="radioChange" wx:if="{{curQuestion.type == 1}}">
+      <radio class="radio" wx:for-items="{{optionItems}}" wx:key="name" value="{{item.isAnswer}}" style="display:block;">
+        <text>{{item.optionVal}}</text>
+      </radio>
+    </radio-group>
+    <!-- 多选 -->
+    <checkbox-group bindchange="checkboxChange" class="quetsuon-option" wx:if="{{curQuestion.type == 2}}">
+      <label class="checkbox" wx:for="{{optionItems}}" wx:key="*this">
+        <checkbox value="{{item.isAnswer}}" />{{item.optionVal}}
+      </label>
+    </checkbox-group>
+    <view class="weui-flex container-footer">
+      <view class="weui-flex__item">
+        <view class="size-center" style="color: #ababab;" bindtap="preQuestion">上一题</view>
+      </view>
+      <view class="weui-flex__item">
+        <view class="size-center" style="border-left: 1px solid #ababab;color: white;background-color: #4F58A8;" bindtap="finished">完成</view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{hasNoData}}">
+    <view>恭喜你,完成所有题目!</view>
+    <button bindtap="goBack">返回</button>
+  </view>
+
+  <!-- 题目完成弹窗 -->
+  <view class="weui-demo-dialog {{isFinish ? 'weui-demo-dialog_show' : ''}}">
+    <view class="weui-mask"></view>
+    <view class="weui-dialog__wrp">
+      <view class="weui-dialog">
+        <view class="my-dialog__hd">
+          <view class="weui-dialog__title my_title" wx:if="{{isAnswer == 'true'}}">恭喜你！完全正确。</view>
+          <view class="weui-dialog__title my_title" wx:if="{{isAnswer != 'true'}}">加油！你可以做的更好的。</view>
+          <view class="my-keywords-title">答案解析:</view>
+        </view>
+        <view class="weui-dialog__bd" style="text-align: left;">
+          <template is="wxParse" data="{{wxParseData:curAnlysis.nodes}}" />
+        </view>
+        <view class="weui-dialog__ft ">
+          <view class="weui-dialog__btn weui-dialog__btn_default " bindtap="closeFinishDialog">取消</view>
+          <view class="weui-dialog__btn " bindtap="nextQuestion">下一题</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,57 @@
+<view class="container">
+  <view class="container-no" wx:if="{{!hasData}}">
+    <view class="company-title">{{company}}</view>
+    <image src="/images/noData.png" style="width:100%;height:560rpx;"></image>
+    <button class="weui-btn" class="company-button" bindtap="addDiscuss">我要评价</button>
+
+    <view class="company-title-label">猜你喜欢</view>
+    <view class="weui-cells weui-cells_after-title" wx:for="{{companyLikeList}}" wx:key="*this">
+      <view class="weui-cell">
+        <view class="weui-cell__bd" bindtap="gotoCompany" data-name="{{item.name}}">{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="container-yes" wx:if="{{hasData}}">
+    <view class="company-title">{{company}}</view>
+    <view wx:for="{{discussList}}" wx:key="*this">
+      <view class='flex-container' bindtap="shoutClick">
+        <image class='flex-left' src='{{item.avatar}}'></image>
+        <view class="flex-center">{{item.nickName}}</view>
+        <view class="flex-right">{{item.discussTime}}</view>
+      </view>
+      <view class="my-article">
+        <view class="weui-article__section">
+          <view class="weui-article__section">
+            <view class="weui-article__p">
+              {{item.discuss}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <button class="weui-btn" class="company-button" bindtap="addDiscuss">我要评价</button>
+    <view class="company-center" wx:if="{{hasMore}}" bindtap="getMoreDiscuss">展开更多
+      <image src="/images/down.png" class="company-down-img"></image>
+    </view>
+  </view>
+  <button class="weui-btn" class="company-button button-position" size="mini" bindtap="gotoQuestion">关联问题</button>
+  <!-- 弹出框（我要评价） -->
+  <view class="weui-demo-dialog {{istrue ? 'weui-demo-dialog_show' : ''}}">
+    <view class="weui-mask" bindtap="closeDialog"></view>
+    <view class="weui-dialog__wrp" bindtap="closeDialog">
+      <view class="weui-dialog" catchtap="stopEvent">
+        <view class="my-dialog__hd">
+          <view class="weui-dialog__title float-left">我要评价</view>
+        </view>
+        <view class="weui-dialog__bd padding-txt">
+          <textarea class="weui-textarea" placeholder="请输入你的评价" style="height: 12.5em" bindinput="getTxt" />
+
+        </view>
+        <view class="weui-dialog__ft">
+          <view class="weui-dialog__btn weui-dialog__btn_default" bindtap="closeDialog">取消</view>
+          <view class="weui-dialog__btn" bindtap="okDialog">确定</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

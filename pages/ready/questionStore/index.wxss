@@ -1,0 +1,59 @@
+/* pages/ready/questionStore/index.wxss */
+
+.placeholder {
+  padding: 0 10px;
+  text-align: center;
+  background-color: #f7f7f7;
+  min-height: 2.3em;
+  line-height: 2.3em;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.my-flex {
+  width: 16%;
+  flex-flow: column;
+  white-space: normal;
+  word-break: break-all;
+  overflow: hidden;
+  position: absolute;
+}
+
+.my-margin {
+  width: 84%;
+  margin-left: 16%;
+}
+
+.flex-item-on {
+  background-color: #4f58a8;
+  color: white;
+}
+
+.list-container {
+  width: 84%;
+  margin-left: 16%;
+  margin-top: 30rpx;
+}
+
+.list-lf {
+  margin-left: 12px;
+  display: inline-block;
+  width: 70%;
+}
+
+.list-rt {
+  float: right;
+  margin-right: 12px;
+  background-color: #4f58a8;
+  padding: 0 10px;
+  color: white;
+  border-radius: 5px;
+}
+
+.list-rt-on {
+  float: right;
+  margin-right: 12px;
+  background-color: #ababab;
+  padding: 0 10px;
+  color: white;
+  border-radius: 5px;
+}

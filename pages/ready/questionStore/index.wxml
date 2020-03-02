@@ -1,0 +1,29 @@
+<view class="i-container">
+  <view class="weui-flex my-flex">
+    <view class="weui-flex__item" wx:for="{{flexs}}" wx:key="*this">
+      <view class="placeholder {{item.on?'flex-item-on':''}}" data-type="{{item.val}}" bindtap="changeType">{{item.name}}</view>
+    </view>
+  </view>
+  <!-- 搜索 -->
+  <view class="weui-search-bar my-margin">
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+        <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+          <icon type="clear" size="14"></icon>
+        </view>
+      </view>
+      <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+        <icon class="weui-icon-search" type="search" size="14"></icon>
+        <view class="weui-search-bar__text">搜索</view>
+      </label>
+    </view>
+    <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+  </view>
+  <view class="list-container" wx:for="{{records}}" wx:key="*this">
+    <view class="list-lf">{{index+1}}.{{item.question}}</view>
+    <view class="list-rt" bindtap="gotoPractice" data-questionId="{{item.id}}" data-type="{{item.type}}" wx:if="{{!item.on}}">标注</view>
+    <view class="list-rt-on" wx:if="{{item.on}}">已注</view>
+  </view>
+</view>

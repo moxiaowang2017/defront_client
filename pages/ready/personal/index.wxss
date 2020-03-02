@@ -1,0 +1,43 @@
+/* pages/ready/personal/index.wxss */
+
+.personal-title {
+  font-size: 24px;
+  margin-left: 24rpx;
+}
+
+.personal-model {
+  margin-top: 28rpx;
+  font-size: 20px;
+  margin-left: 24rpx;
+}
+
+.personal-answer {
+  font-size: 20px;
+  margin-left: 24rpx;
+}
+
+.kip-img {
+  height: 50rpx;
+  width: 50rpx;
+  position: absolute;
+  top: 6rpx;
+  right: 40rpx;
+}
+
+.personal-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.is-open-container {
+  margin-top: 24rpx;
+  margin-left: 24rpx;
+}
+
+.is-open-txt {
+  width: 74%;
+  display: inline-block;
+}

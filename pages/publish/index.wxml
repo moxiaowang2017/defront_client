@@ -1,0 +1,35 @@
+<view class="container">
+  <view wx:for="{{publishList}}" wx:key="*this" wx:if="{{hasData}}" style="width: 100%;">
+    <view class='flex-container' bindtap="shoutClick">
+      <image class='flex-left' src='{{item.avatar}}' wx:if="{{me==1 || !item.anonymous}}"></image>
+      <image class='flex-left' src='/images/publish/avatar.png' wx:if="{{me!=1 && item.anonymous}}"></image>
+      <view class="flex-center" wx:if="{{me==1 || !item.anonymous}}">{{item.nickName}}</view>
+      <view class="flex-center" wx:if="{{me!=1 && item.anonymous}}">匿名用户</view>
+      <view class="flex-right">{{item.publishTimeStr}}</view>
+    </view>
+    <view class="my-article">
+      <view class="weui-article__p">
+        <p style="color:#4F58A5;">#{{item.category}}#</p>{{item.content}}
+      </view>
+      <view class="img-container" wx:if="{{!hasClicksMap[item.id]}}">
+        <image src="/images/publish/clicks.png" bindtap="insertClicks" data-id="{{item.id}}"></image>
+        <p>{{item.clicks}} </p>
+
+        <!-- <image src="/images/publish/review.png"></image><p>{{item.reviewNum}}</p> -->
+      </view>
+      <view class="img-container" wx:if="{{hasClicksMap[item.id]}}">
+        <image src="/images/publish/hasClicks.png" data-id="{{item.id}}"></image>
+        <p>{{item.clicks + 1}} </p>
+      </view>
+        <!-- <view class="review-container">
+        <image src="/images/publish/avatar.png"></image>我挺好的
+      </view>
+      <view class="review_input">
+        <input class="weui-input publish-input" auto-focus placeholder="" />
+        <view class="publish-label">发表</view>
+      </view> -->
+      </view>
+    </view>
+
+    <view wx:if="{{!hasData}}" style="margin-top: 50%;color: #ababab;">暂无数据</view>
+  </view>

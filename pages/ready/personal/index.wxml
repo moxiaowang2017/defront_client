@@ -1,0 +1,36 @@
+<!--pages/ready/personal/index.wxml-->
+<view class="personal-container">
+  <view class="personal-title">{{commonQuestion.question}}</view>
+  <view class="personal-model">模版</view>
+  <view class="weui-article">
+    <view class="weui-article__section">
+      <view class="weui-article__section">
+        <view class="weui-article__p">
+          {{commonQuestion.questionModel}}
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="personal-answer">我的答案</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea class="weui-textarea" placeholder="请输入文本" value="{{myAnswer}}" style="height: 12em" bindinput="changeInput"/>
+      </view>
+    </view>
+  </view>
+  <view class="personal-answer">关键字</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea class="weui-textarea" placeholder="请输入文本" style="height: 2em" bindinput="changeKeywords" value="{{keywords}}"/>
+      </view>
+    </view>
+  </view>
+  <!-- <view class="is-open-container">
+    <checkbox class="checkbox" bindtap="checkboxChange"/>
+    <view class="is-open-txt">是否公开:</view>
+  </view> -->
+  <button class="weui-btn mini-btn" style="background-color: #4F58A5;color:white;margin-top: 35rpx;" size="mini" bindtap="insertPersonal">保存</button>
+  <!-- <image src="/images/kip.png" class="kip-img"></image> -->
+</view>

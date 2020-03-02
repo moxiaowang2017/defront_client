@@ -1,0 +1,72 @@
+/* pages/publish/index.wxss */
+
+.flex-container {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  height: 100rpx;
+  line-height: 100rpx;
+  background-color: white;
+  margin-top: 35rpx;
+  border-radius: 5px;
+}
+
+.flex-center {
+  flex: 2;
+  padding-left: 12px;
+}
+
+.flex-right {
+  flex: 2.5;
+  color: #ababab;
+  text-align: right;
+}
+
+.flex-container image {
+  height: 75rpx;
+  width: 75rpx;
+}
+
+.my-article {
+  padding: 0px calc(16px + env(safe-area-inset-right)) calc(24px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left));
+  font-size: 17px;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.img-container {
+  color: #ababab;
+}
+
+.img-container image {
+  width: 50rpx;
+  height: 40rpx;
+}
+
+.review_input {
+  float: right;
+  display: flex;
+}
+
+.publish-input {
+  padding: 8rpx;
+  border: 1px solid #ededed;
+}
+
+.publish-label {
+  padding: 4rpx 25rpx;
+  border: 1px solid #ededed;
+  margin-left: 26rpx;
+  color: #4f58a5;
+}
+
+.review-container {
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.review-container image {
+  width: 80rpx;
+  height: 80rpx;
+}

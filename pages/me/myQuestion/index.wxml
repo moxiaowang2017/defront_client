@@ -1,0 +1,11 @@
+<view class="container">
+  <view wx:if="{{hasData}}" style="padding:30rpx;">
+    <view class="list-container" wx:for="{{questionList}}" wx:key="*this">
+      <view class="list-label">{{categoryEum[item.category]}}</view>
+      <view class="list-txt">{{index+1}}.{{item.question}}</view>
+    </view>
+  </view>
+  <view wx:if="{{!hasData}}" class="nodata-container">
+    <image src="/images/me/picture-nodata.png" class="nodata-img"></image>
+  </view>
+</view>

@@ -1,0 +1,35 @@
+/* pages/me/myQuestion/index.wxss */
+
+.list-container {
+  width: 93%;
+  margin-top: 20rpx;
+}
+
+.list-label {
+  float: left;
+  background-color: #4f58a5;
+  color: white;
+  padding: 0rpx 15rpx;
+  border-radius: 13rpx;
+}
+
+.list-txt {
+  padding: 0 90rpx;
+}
+
+.nodata-img {
+  width: 300rpx;
+  height: 200rpx;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.nodata-container {
+  position: absolute;
+  left: calc(50% - 60px);
+  top: 30%;
+}
+
+.nodata-label {
+  margin-top: 20rpx;
+}

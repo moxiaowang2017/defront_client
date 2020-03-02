@@ -1,0 +1,41 @@
+<view class="add-container">
+  <form bindsubmit="bindFormSubmit">
+    <view class="my-cells-title">问题</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="请输入问题"  name="question" />
+        </view>
+      </view>
+    </view>
+    <view class="my-cells-title">问题答案</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="请输入答案" name="answer" />
+        </view>
+      </view>
+    </view>
+    <view class="my-cells-title">问题类型</view>
+    <view class="weui-cells weui-cells_after-title">
+      <radio-group bindchange="typeChange">
+        <label class="weui-cell weui-check__label" wx:for="{{typeItems}}" wx:key="value">
+          <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}" />
+          <view class="weui-cell__bd">{{item.name}}</view>
+          <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+            <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+          </view>
+        </label>
+      </radio-group>
+    </view>
+    <view class="my-cells-title">关键字</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell ">
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入关键字"  name="keywords"/>
+        </view>
+      </view>
+    </view>
+    <button class="weui-btn mini-btn" type="primary" size="mini" style="margin-left: 46%;margin-top: 30rpx;" form-type="submit">提交</button>
+  </form>
+</view>

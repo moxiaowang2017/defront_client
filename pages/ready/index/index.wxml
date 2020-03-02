@@ -1,0 +1,27 @@
+<view class="container">
+  <view class="container-title">基本信息</view>
+  <view class="container-top">
+    <view>将要面试的公司</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell ">
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入文本" bindinput ='getCompany'/>
+        </view>
+      </view>
+    </view>
+    <view class="top-label" bindtap="gotoCompany">
+     相关信息 <image src="/images/index/tip.png" style="height:25rpx;width:25rpx;"></image></view>
+  </view>
+  <view class="container-title">常见问题</view>
+  <view class="container-bottom">
+    <view class="weui-cells weui-cells_after-title" wx:for="{{commonQuestions}}" wx:key="*this" bindtap="addToPersonal" data-id="{{item.id}}">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">{{item.question}}</view>
+      </view>
+    </view>
+    <view class="pageIcon-container">
+      <view class="pageIcon {{index+1 == pageNo?'pageIcon-on':''}}" wx:for="{{pages}}" wx:key="*this" data-index="{{index + 1}}" bindtap="gotoPage">{{index + 1}}</view>
+    </view>
+    <!-- <image src="/images/index/add.png" class="ready-img"></image> -->
+  </view>
+</view>

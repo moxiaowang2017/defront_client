@@ -1,0 +1,26 @@
+<view>
+  <view class="weui-panel weui-panel_access">
+    <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_text">
+        <view class="weui-media-box__title weui-media-box__title_in-text">关于小程序</view>
+        <view class="weui-media-box__desc">该小程序主要致力于前端面试的解决方案,主要有3大功能点：
+            <view>1.前端远程面试解决方案</view>
+            <view>2.前端面试前的准备(知己知彼,方能百战百胜)</view>
+            <view>3.平时的练习(随时准备，才能抓住机会)</view>
+            <view>(注：具体的操作介绍可以参看【我的】->【关于系统】)</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="my-cells__title">我的建议</view>
+  <form bindsubmit="bindFormSubmit">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="请输入建议" style="height: 12.3em" name="advice" />
+        </view>
+      </view>
+    </view>
+    <button class="weui-btn mini-btn" size="mini" style="margin-left: 46%;margin-top: 30rpx;background-color: #4F58A5;color: white;" form-type="submit">提交</button>
+  </form>
+</view>

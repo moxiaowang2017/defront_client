@@ -1,0 +1,78 @@
+/**index.wxss**/
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.my-grids-sty {
+  background-color: white;
+  z-index: 100;
+  width: 100%;
+  margin-top: calc(30% - 30rpx);
+  border-top-left-radius: 100rpx;
+  border-top-right-radius: 100rpx;
+  padding-top: 40rpx;
+}
+
+.grids-img {
+  height: 150rpx;
+  width: 150rpx;
+  position: relative;
+  left: calc(50% - 75rpx);
+}
+
+.my-grid-label {
+  font-size: 50rpx;
+  font-weight: 600;
+  text-align: center;
+}
+
+.header-container {
+  background-color: #4f58a8;
+  width: 100%;
+  height: 30%;
+  color: white;
+  position: absolute;
+}
+
+.header-one {
+  font-size: 65rpx;
+  padding-left: 50rpx;
+}
+
+.header-two {
+  font-size: 38rpx;
+  padding-left: 50rpx;
+}
+
+button {
+  display: block;
+}
+
+button:not([size='mini']) {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.my-button {
+  background-color: white;
+  font-size: 50rpx;
+  text-align: center;
+}

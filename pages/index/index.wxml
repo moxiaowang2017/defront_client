@@ -1,0 +1,17 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="header-container">
+     <view class="header-one">{{dateItem.date}}</view>
+     <view class="header-two">{{dateItem.monthStr}}    {{dateItem.weekStr}}</view>
+  </view>
+  <view class="weui-grids my-grids-sty">
+      <block wx:for="{{grids}}" wx:key="*this">
+          <view bindtap="gotoUrl" data-url="{{item.url}}" class="weui-grid" style="width:50%;height:33.3333%;padding: 30rpx 10px;">
+              <image src="{{item.imgUrl}}" class="grids-img"></image>
+                  <button class="my-button" bindtap='onShareAppMessage' open-type="share" wx:if="{{item.name == '分享'}}" style="width: 85%;line-height: 1;">{{item.name}}</button>
+              <view class="my-grid-label" wx:if="{{item.name != '分享'}}">{{item.name}}</view>
+          </view>
+      </block>
+  </view>
+  
+</view>

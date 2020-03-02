@@ -1,0 +1,9 @@
+/* pages/me/advice/index.wxss */
+
+.my-cells__title {
+  margin-top: 16px;
+  margin-bottom: 3px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+

@@ -1,0 +1,88 @@
+<import src="../../components/wxParse/wxParse.wxml"/>
+<view class="interview-container">
+  <view class="weui-flex my-flex">
+    <view class="weui-flex__item" wx:for="{{flexs}}" wx:key="*this">
+      <view class="placeholder {{item.on?'flex-item-on':''}}" data-type="{{item.val}}" bindtap="changeType">{{item.name}}</view>
+    </view>
+  </view>
+  <view class="weui-search-bar my-margin">
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+        <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+          <icon type="clear" size="14"></icon>
+        </view>
+      </view>
+      <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+        <icon class="weui-icon-search" type="search" size="14"></icon>
+        <view class="weui-search-bar__text">搜索</view>
+      </label>
+    </view>
+    <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+  </view>
+  <view class="weui-cells weui-cells_after-title my-margin" wx:if="{{hasData}}">
+    <view class="weui-cell" wx:for="{{records}}" wx:key="*this">
+      <view class="weui-cell__bd" data-answer="{{item.answer?item.answer:item.myAnswer}}" data-keywords="{{item.keywords}}" data-question="{{item.question}}" data-id="{{type == 'common'?item.commonId:item.id}}" bindtap="getAnswer">{{item.question}}</view>
+    </view>
+  </view>
+  <view wx:if="{{!hasData}}" class="has-no-data">
+    暂无数据
+  </view>
+  <!-- 弹框 -->
+  <view class="weui-demo-dialog {{istrue ? 'weui-demo-dialog_show' : ''}}">
+    <view class="weui-mask" bindtap="closeDialog"></view>
+    <view class="weui-dialog__wrp" bindtap="closeDialog">
+      <view class="weui-dialog" catchtap="stopEvent" style="text-align:left">
+        <view class="my-dialog__hd">
+          <view class="weui-dialog__title my_title">{{curQuestion}}</view>
+          <view class="my-keywords-title" wx:if="{{curKeywords}}">关键字：</view>
+          <view class="my-keywords">{{curKeywords}}</view>
+        </view>
+        <view class="my-keywords-title">简要答案</view>
+        <view class="weui-dialog__bd padding-txt">
+          <template is="wxParse" data="{{wxParseData:curAnswer.nodes}}"/>
+        </view>
+        <view class="weui-dialog__ft" style="text-align:center">
+          <view class="weui-dialog__btn weui-dialog__btn_default" bindtap="closeDialog">取消</view>
+          <view class="weui-dialog__btn" bindtap="closeDialog">确定</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 面试完成弹框 -->
+  <view class="weui-demo-dialog {{isFinish ? 'weui-demo-dialog_show' : ''}}">
+    <view class="weui-mask"></view>
+    <view class="weui-dialog__wrp">
+      <view class="weui-dialog">
+        <view class="my-dialog__hd">
+          <view class="weui-dialog__title my_title">恭喜你！完成一场面试。</view>
+          <view class="my-babel">根据系统定位操作,您总共面试了以下几道题。是否对他们进行标记,以利于更多的用户</view>
+          <view class="my-keywords-title">您面试的公司:</view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell ">
+              <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="" bindinput="changeCompany"/>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="weui-dialog__bd">
+          <view class="list-container" wx:for="{{questionList}}" wx:key="*this">
+            <view class="list-title">{{item.question}}</view>
+            <icon type="cancel" size="23" bindtap="cancelQuestion" data-id="{{item.questionId}}"></icon>
+          </view>
+        </view>
+        <view class="weui-dialog__ft ">
+          <view class="weui-dialog__btn weui-dialog__btn_default " bindtap="closeFinishDialog">取消</view>
+          <view class="weui-dialog__btn " bindtap="okDialog">确定</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="finish-button" bindtap="finishInterview" wx:if="{{finishButton}}">
+    完成
+  </view>
+</view>

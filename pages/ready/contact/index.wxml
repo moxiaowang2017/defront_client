@@ -1,0 +1,24 @@
+<view class="container">
+  <view class="company-title">{{company}}</view>
+  <view class="nav-container">
+    <view class="nav-lf {{isMark == 0?'nav-on':''}}" bindtap="markSearch" data-mark="0">未标注</view>
+    <view class="nav-rt {{isMark == 1?'nav-on':''}}" bindtap="markSearch" data-mark="1">已标注</view>
+  </view>
+  <!-- 未标注 -->
+  <view class="list-container" wx:for="{{questionList}}" wx:key="*this" wx:if="{{isMark == 0}}">
+    <view class="list-lf">{{index+1}}.{{item.question}}</view>
+    <view class="list-rt" bindtap="gotoPractice" data-questionId="{{item.questionId}}" data-type="{{item.type}}" wx:if="{{!item.on && item.type != 'common'}}">标注</view>
+    <view class="list-rt-on" wx:if="{{item.on && item.type != 'common'}}">已标注</view>
+    <view class="list-rt" wx:if="{{item.type == 'common'}}" data-questionId="{{item.questionId}}" bindtap="commonClick">常见问题</view>
+  </view>
+  <!-- 已标注 -->
+  <view class="list-container" wx:for="{{markList}}" wx:key="*this" wx:if="{{isMark == 1}}">
+    <view class="list-lf">{{index+1}}.{{item.question}}</view>
+    <view class="list-rt" bindtap="gotoCancel" data-questionId="{{item.questionId}}" data-type="{{item.type}}" wx:if="{{item.type != 'common'}}">取消</view>
+  </view>
+  <image src="/images/ready/add.png" class="ready-img" wx:if="{{isMark == 0}}" bindtap="goToQuestionStore"></image>
+  <image src="/images/ready/store.png" class="ready-img" wx:if="{{isMark == 1}}" bindtap="gotoMakeStore"></image>
+  <view class="weui-badge ready-badge" wx:if="{{isMark == 1}}">{{markNum}}</view>
+  <view wx:if="{{!hasData && isMark == 0}}" style="margin-top:45%;">暂无数据</view>
+  <view wx:if="{{!hasMarkData && isMark == 1}}" style="margin-top:45%;">暂无数据</view>
+</view>

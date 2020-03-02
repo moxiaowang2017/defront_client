@@ -1,0 +1,27 @@
+<view class="container">
+  <view class="weui-flex" style="padding:10px 0;width: 98%;">
+    <view class="weui-flex__item">
+      <view class="size-center">已练习的天数</view>
+      <view class="size-center">{{continueDay}}天</view>
+    </view>
+    <view class="weui-flex__item">
+      <view class="size-center">已练习的题数</view>
+      <view class="size-center">{{totalNum}}</view>
+    </view>
+  </view>
+  <view class="list-container" wx:for="{{items}}" wx:key="*this">
+    <view class="list-lf">{{item.name}}</view>
+    <view class="list-rt" bindtap="gotoPractice" data-category="{{item.category}}">练习</view>
+    <view class="weui-flex list-label">
+      <view class="weui-flex__item">
+        <view class="size-center">共{{item.total}}道</view>
+      </view>
+      <view class="weui-flex__item" style="border-left: 1px solid #ababab;">
+        <view class="size-center">已练习{{item.done}}题</view>
+      </view>
+      <view class="weui-flex__item" style="border-left: 1px solid #ababab;">
+        <view class="size-center">正确率{{item.acc}}%</view>
+      </view>
+    </view>
+  </view>
+</view>

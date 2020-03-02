@@ -1,0 +1,19 @@
+/* pages/ready/markStore/index.wxss */
+.list-container {
+  width: 98%;
+  margin-top: 20px;
+}
+
+.list-lf {
+  float: left;
+  margin-left: 12px;
+}
+
+.list-rt {
+  float: right;
+  margin-right: 12px;
+  background-color: #4f58a8;
+  padding: 0 10px;
+  color: white;
+  border-radius: 5px;
+}

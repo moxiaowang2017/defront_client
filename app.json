@@ -1,0 +1,57 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/interview/index",
+    "pages/ready/index/index",
+    "pages/ready/company/index",
+    "pages/ready/contact/index",
+    "pages/ready/personal/index",
+    "pages/logs/logs",
+    "pages/question/add/index",
+    "pages/training/index/index",
+    "pages/training/practice/index",
+    "pages/login/index",
+    "pages/me/index/index",
+    "pages/me/advice/index",
+    "pages/me/myQuestion/index",
+    "pages/publish/index",
+    "pages/me/editor/editor",
+    "pages/more/index/index",
+    "pages/more/article/index",
+    "pages/me/article/index",
+    "pages/more/articleDetail/index",
+    "pages/ready/markStore/index",
+    "pages/me/interviewRecord/index",
+    "pages/me/chart/index",
+    "pages/ready/questionStore/index",
+    "pages/me/help/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "前端面试",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#6e6d6b",
+    "selectedColor": "#4F58A8",
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/index/index",
+        "iconPath": "images/index_defalut.png",
+        "selectedIconPath": "images/index_active.png"
+      },
+      {       
+        "text": "我的",
+        "pagePath": "pages/me/index/index",
+        "iconPath": "images/me_defalut.png",
+        "selectedIconPath": "images/me_active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

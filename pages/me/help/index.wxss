@@ -1,0 +1,6 @@
+/* pages/me/help/index.wxss */
+
+.help-title {
+  font-weight: 600;
+  font-size: 1.2em;
+}

@@ -1,0 +1,9 @@
+<view class="interview-title">我的面试记录</view>
+<view wx:for="{{interviewList}}" wx:key="*this">
+  <view class="date">{{item.interviewDateStr}}</view>
+  <view class="logAdrWrap text-css">
+    <view>{{item.company}} </view>
+    <button size="mini" wx:if="{{!item.review}}" bindtap="gotoReview" data-company="{{item.company}}" data-id="{{item.id}}">评价</button>
+  </view>
+</view>
+<view wx:if="{{!hasData}}" style="margin-top:50%;text-align: center;">暂无数据</view>

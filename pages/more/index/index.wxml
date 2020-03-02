@@ -1,0 +1,9 @@
+<view class="container">
+  <view class="list-container" bindtap="detailContent" data-detailId="{{item.detailId}}" wx:for="{{articleList}}" wx:key="*this">
+    <view class="category">{{item.category}}</view>
+    <view>
+      <view class="title">{{item.title}}</view>
+      <view class="label">{{item.label}} </view>
+    </view>
+  </view>
+</view>

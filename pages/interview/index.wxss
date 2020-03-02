@@ -1,0 +1,104 @@
+@import "../../components/wxParse/wxParse.wxss";
+.placeholder {
+  padding: 0 10px;
+  text-align: center;
+  background-color: #f7f7f7;
+  min-height: 2.3em;
+  line-height: 2.3em;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.my-flex {
+  width: 16%;
+  flex-flow: column;
+  white-space: normal;
+  word-break: break-all;
+  overflow: hidden;
+  position: fixed;
+}
+
+.my-margin {
+  width: 84%;
+  margin-left: 16%;
+}
+
+.flex-item-on {
+  background-color: #4f58a8;
+  color: white;
+}
+
+.has-no-data {
+  width: 84%;
+  margin-left: 16%;
+  text-align: center;
+  color: #ababab;
+  margin-top: 45%;
+}
+
+
+.my_title {
+  text-align: left;
+  background-color: #4f58a8;
+  width: 100%;
+  color: white;
+  padding: 12rpx 12rpx;
+}
+
+.my-keywords-title {
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1.4;
+  text-align: left;
+  padding: 12rpx;
+}
+
+.my-keywords {
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1.4;
+  text-align: left;
+  padding: 12rpx 24px;
+  color: red;
+}
+
+.finish-button {
+  position: fixed;
+  right: 24rpx;
+  bottom: 30rpx;
+  padding: 27rpx 21rpx;
+  border-radius: 65rpx;
+  background-color: #4f58a8;
+  color: white;
+}
+
+.list-title {
+  display: inline-block;
+  text-align: left;
+  width: 90%;
+  font-weight: 700;
+  color: black;
+  padding: 15rpx 0;
+}
+
+.my-babel {
+  font-size: 17px;
+  line-height: 1.4;
+  text-align: left;
+  padding: 28rpx;
+  color: #ababab;
+}
+
+.my-dialog__hd{
+  word-break: break-all;
+}
+
+.weui-demo-dialog {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.weui-demo-dialog_show {
+  display: block;
+  opacity: 1;
+}

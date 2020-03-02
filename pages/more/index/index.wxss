@@ -1,0 +1,28 @@
+/* pages/more/index.wxss */
+
+.list-container {
+  display: flex;
+  border-bottom: 1px solid #ededed;
+  padding-bottom: 20rpx;
+  margin-top: 20rpx;
+}
+
+.category {
+  width: 200rpx;
+  height: 120rpx;
+  background-color: #4f58a5;
+  color: white;
+  text-align: center;
+  line-height: 120rpx;
+  margin: 20rpx;
+  font-size: 1.2em;
+}
+
+.title {
+  font-size: 1.2em;
+}
+
+.label {
+  font-size: 0.9em;
+  color: #ababab;
+}

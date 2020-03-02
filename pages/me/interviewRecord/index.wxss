@@ -1,0 +1,49 @@
+.logAdrWrap::before {
+  content: '';
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 30rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #4f58a5;
+}
+
+.logAdrWrap::after {
+  content: '';
+  width: 10rpx;
+  height: calc(100% - 30rpx);
+  position: absolute;
+  top: 28rpx;
+  left: 11rpx;
+  background-color: #ededed;
+}
+
+.logAdrWrap {
+  position: relative;
+  left: 30%;
+}
+
+.text-css {
+  padding-left: 24px;
+  height: 150rpx;
+  font-size: 1em;
+}
+
+.date {
+  position: absolute;
+  left: 4%;
+  color: #ababab;
+}
+
+button {
+  color: white;
+  background-color: #4f58a5;
+}
+
+.interview-title {
+  margin: 50rpx 20rpx;
+  font-size: 1.2em;
+  border-left: 6px solid #4f58a5;
+  padding-left: 10rpx;
+}

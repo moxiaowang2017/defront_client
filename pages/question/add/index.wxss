@@ -1,0 +1,8 @@
+.my-cells-title {
+  margin-top: 16px;
+  margin-bottom: 3px;
+  padding-left: 16px;
+  padding-right: 16px;
+  font-size: 21px;
+  color: black;
+}
