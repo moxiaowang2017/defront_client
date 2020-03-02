@@ -27,6 +27,17 @@ function searchTraining(category, pageNo, pageSize) {
   })
 }
 
+// 根据问题分类查询练习题
+function searchTrainingById(id) {
+  return new Promise(function (resolve, reject) {
+    util.request(api.SearchTrainingById + `/${id}`, {}, 'GET').then(res => {
+      resolve(res);
+    }).catch((err) => {
+      reject(err);
+    });
+  })
+}
+
 // 根据问题Id查询问题选项
 function searchOption(questionId) {
   return new Promise(function (resolve, reject) {
@@ -65,6 +76,7 @@ function queryDoQuestion(type,pageNo,pageSize) {
 module.exports = {
   statistics,
   searchTraining,
+  searchTrainingById,
   searchOption,
   insertDoQuestion,
   queryDoQuestion

@@ -1,6 +1,4 @@
-// var WxApiRoot = 'http://139.129.116.136:8080/wx/';
-// var WxApiRoot = 'https://localhost:8080/wx/';
-var WxApiRoot = 'https://jours.cc:8080/wx/';
+var WxApiRoot = 'https://localhost:8080/wx/';
 
 
 module.exports = {
@@ -21,6 +19,7 @@ module.exports = {
   InsertConcatQuestion: WxApiRoot + 'company/insertConcatQuestion',// 批量添加关联问题
   Statistics: WxApiRoot + 'training/statistics',//练习统计
   SearchTraining: WxApiRoot + 'training/searchTraining',//根据问题分类获取练习题
+  SearchTrainingById: WxApiRoot + 'training/searchById',//根据问题ID获取练习题
   SearchOption: WxApiRoot + 'training/searchOption',//根据问题ID查询选项
   InsertDoQuestion: WxApiRoot + 'training/insertDoQuestion',//添加自己的练习库
   InsertByQuestionId: WxApiRoot + 'markQuestion/insertByQuestionId',//根据questionID添加标注问题

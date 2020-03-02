@@ -1,20 +1,22 @@
 /* pages/me/myQuestion/index.wxss */
 
 .list-container {
-  width: 93%;
+  width: 100%;
   margin-top: 20rpx;
+  display: flex;
 }
 
 .list-label {
-  float: left;
   background-color: #4f58a5;
   color: white;
   padding: 0rpx 15rpx;
   border-radius: 13rpx;
+  width: 40rpx;
+  height: 54rpx;
 }
 
 .list-txt {
-  padding: 0 90rpx;
+  padding-left: 30rpx;
 }
 
 .nodata-img {

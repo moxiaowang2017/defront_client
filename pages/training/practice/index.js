@@ -7,7 +7,7 @@ Page({
   data: {
     optionItems: [],
     pageNo: 1,
-    pageSize: 20,
+    pageSize: 1,
     curIndex: 1,
     questionType: {
       1: "【单选题】",
@@ -17,12 +17,53 @@ Page({
     questionList: []
   },
   onLoad(option) {
-    let category = option.category;
-    this.setData({
-      category: category
-    })
-    this.searchTraining(category, 1)
+    this.initData(option)
   },
+  // 初始化数据
+  initData(option){
+    let curId = option.curId;
+    // 上一题跳转
+    if (curId){
+      let category = option.category;
+      let curIndex = option.curIndex;
+      if (!curIndex) {
+        curIndex = 1
+      }
+      this.setData({
+        category: category,
+        curIndex: curIndex
+      })
+      this.searchTrainingById(curId);
+    }else{
+      let category = option.category;
+      let curIndex = option.curIndex;
+      let lastQuestionId = option.lastQuestionId;
+      if (!curIndex) {
+        curIndex = 1
+      }
+      this.setData({
+        category: category,
+        curIndex: curIndex,
+        lastQuestionId: lastQuestionId ? lastQuestionId : null
+      })
+      this.searchTraining(category, 1)
+    }
+    
+  },
+  searchTrainingById(id){
+    trainingUtil.searchTrainingById(id).then(res=>{
+      console.info('searchTrainingById', res);
+      if (res.errno == 0){
+        this.setData({
+          curQuestion: res.data,
+          curType: this.data.questionType[res.data.type]
+        })
+        WxParse.wxParse('curAnlysis', 'html', res.data.analysis, this, 5);
+        this.searchOption(id)
+      }
+    })
+  },
+  // 查询面试题
   searchTraining(category, pageNo) {
     if (!pageNo) {
       pageNo = this.data.pageNo;
@@ -35,7 +76,6 @@ Page({
 
         if (l && l.length > 0) {
           this.setData({
-            questionList: this.data.questionList.concat(l),
             curQuestion: l[0],
             curType: this.data.questionType[l[0].type]
           })
@@ -72,20 +112,12 @@ Page({
   // 单选获取值
   radioChange(e) {
     let answer = e.detail.value
-    // let list = this.data.optionItems.filter(item => {
-    //   return item.id == id
-    // })
-    // let answer = false;
-    // if (list && list.length > 0) {
-    //   answer = list[0].isAnswer
-    // }
-    console.info('answer', answer)
     this.setData({
       hasChoose: answer,
       isAnswer: answer
     })
   },
-  // 多选获取值
+  // 多选获取值并判断是否为正确答案
   checkboxChange(e) {
     let vals = e.detail.value
     let chooseLength = vals.length;
@@ -96,7 +128,6 @@ Page({
     if (trueList) {
       trueLength = trueList.length
     }
-    console.info('vals', vals)
     let isAnswer = 'false'
     if (vals.indexOf("false") < 0) {
       if (trueLength == chooseLength) {
@@ -125,7 +156,7 @@ Page({
     })
   },
   // 添加到自己的做题库
-  insertMydoQuestion() {
+  insertMydoQuestion(successBack) {
     let doQuestion = {
       question: this.data.curQuestion.question,
       questionId: this.data.curQuestion.id,
@@ -134,53 +165,36 @@ Page({
     }
     trainingUtil.insertDoQuestion(doQuestion).then(res => {
       console.info('insertDoQuestion', res)
+      successBack()
     }).catch((err) => {
       console.info('err', err)
     });
   },
   //上一题
   preQuestion() {
-    let curIndex = this.data.curIndex;
-    if (curIndex <= 1) {
-      util.showErrorToast('当前还是第一题哦！')
-    } else {
-      curIndex = curIndex - 1;
-      let curQuestion = this.data.questionList[curIndex - 1]
-      console.info('curQuestion', curQuestion)
-      this.searchOption(curQuestion.id)
-      this.setData({
-        curQuestion: curQuestion,
-        curType: this.data.questionType[curQuestion.type],
-        curIndex: curIndex
+    let lastQuestionId = this.data.lastQuestionId;
+    if (lastQuestionId){
+      let curIndex = parseInt(this.data.curIndex);
+      let category = this.data.category;
+      console.info('category', category)
+      wx.redirectTo({
+        url: '/pages/training/practice/index?curId=' + lastQuestionId + '&category=' + category + '&curIndex=' + (curIndex - 1),
       })
-      WxParse.wxParse('curAnlysis', 'html', curQuestion.analysis, this, 5);
+    }else{
+      util.showErrorToast('当前还是第一题哦');
     }
   },
   // 下一题
   nextQuestion() {
-    this.insertMydoQuestion();
-    this.closeFinishDialog();
-    let curIndex = this.data.curIndex;
-    let pageNo = this.data.pageNo;
-    let pageSize = this.data.pageSize;
-    let curQuestionNum = this.data.questionList.length;
-    // 如果当前数量大于当前获取量，则重新获取
-    if (curIndex >= curQuestionNum) {
-      this.setData({
-        pageNo: pageNo + 1,
-        curIndex: curIndex + 1
+    let lastQuestionId = this.data.curQuestion.id;
+    let curIndex = parseInt(this.data.curIndex);
+    let category = this.data.category;
+    console.info('category', category)
+    this.insertMydoQuestion(function(){
+      wx.redirectTo({
+        url: '/pages/training/practice/index?category=' + category + '&curIndex=' + (curIndex + 1) + '&lastQuestionId=' + lastQuestionId,
       })
-      this.searchTraining(this.data.category)
-    } else {
-      let curQuestion = this.data.questionList[curIndex]
-      this.setData({
-        curQuestion: curQuestion,
-        curType: this.data.questionType[curQuestion.type],
-        curIndex: curIndex + 1
-      })
-      WxParse.wxParse('curAnlysis', 'html', curQuestion.analysis, this, 5);
-      this.searchOption(curQuestion.id)
-    }
+    })
   },
   goBack(){
     wx.navigateBack({

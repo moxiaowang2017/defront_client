@@ -38,6 +38,12 @@
   left: calc(50% - 75rpx);
 }
 
+.grids-button-img{
+  height: 150rpx;
+  width: 150rpx;
+  position: relative;
+}
+
 .my-grid-label {
   font-size: 50rpx;
   font-weight: 600;
