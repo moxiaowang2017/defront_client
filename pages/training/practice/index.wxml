@@ -1,14 +1,19 @@
 <import src="../../../components/wxParse/wxParse.wxml" />
 <view class="container">
-  <view wx:if="{{!hasNoData}}" style="width:100%">
+  <view wx:if="{{!hasNoData}}" style="width:96%">
     <view class="container-width" style="color:#4F58A8;">{{curType}}</view>
     <view class="container-width quetsuon-title">{{curIndex}}.{{curQuestion.question}}：</view>
     <!-- 单选 -->
     <radio-group class="radio-group container-width quetsuon-option" bindchange="radioChange" wx:if="{{curQuestion.type == 1}}">
+      <label wx:for="{{optionItems}}" wx:key="*this" style="display:block;">
+          <radio class="radio" value="{{item.isAnswer}}"/>{{item.optionVal}}
+      </label>
+    </radio-group>
+    <!-- <radio-group class="radio-group container-width quetsuon-option" bindchange="radioChange" wx:if="{{curQuestion.type == 1}}">
       <radio class="radio" wx:for-items="{{optionItems}}" wx:key="name" value="{{item.isAnswer}}" style="display:block;">
         <text>{{item.optionVal}}</text>
       </radio>
-    </radio-group>
+    </radio-group> -->
     <!-- 多选 -->
     <checkbox-group bindchange="checkboxChange" class="quetsuon-option" wx:if="{{curQuestion.type == 2}}">
       <label class="checkbox" wx:for="{{optionItems}}" wx:key="*this">

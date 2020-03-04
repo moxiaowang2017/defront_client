@@ -83,6 +83,8 @@ Page({
     this.setData({
       inputVal: e.detail.value
     });
+    this.initData();
+    this.search(this.data.type)
   },
   //类型转换
   changeType(e) {

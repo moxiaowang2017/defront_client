@@ -17,7 +17,7 @@ label[class='checkbox'] {
 
 .quetsuon-option {
   margin-top: 12px;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .container-footer {
